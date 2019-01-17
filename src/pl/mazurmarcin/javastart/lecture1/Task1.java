@@ -9,5 +9,7 @@ public class Task1 {
 
         System.out.println("Kolejny przypadkowy tekst");
 
+        System.out.println("Jeszcze więcej przypadkowego tekstu");
+
     }
 }
