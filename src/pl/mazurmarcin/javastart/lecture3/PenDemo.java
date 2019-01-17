@@ -7,18 +7,10 @@ public class PenDemo {
 
     public static void main(String[] args) {
 
-        Pen pen1 = new Pen();
-        pen1.setAge(1);
-        pen1.setColor("Blue");
-        pen1.setSize(0.14);
-
+        Pen pen1 = new Pen("Blue", 0.14, 1);
         System.out.println(pen1.toString());
 
-        Pen pen2 = new Pen();
-        pen2.setAge(2);
-        pen2.setColor("Black");
-        pen2.setSize(0.21);
-
+        Pen pen2 = new Pen("Black", 0.21, 2);
         System.out.println(pen2.toString());
 
     }

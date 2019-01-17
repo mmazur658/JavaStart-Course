@@ -13,6 +13,12 @@ public class Pen {
 
     }
 
+    public Pen(String color, double size, int age) {
+        this.color = color;
+        this.size = size;
+        this.age = age;
+    }
+
     public String getColor() {
         return color;
     }

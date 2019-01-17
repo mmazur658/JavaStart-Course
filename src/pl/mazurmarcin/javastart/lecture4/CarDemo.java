@@ -1,8 +1,5 @@
 package pl.mazurmarcin.javastart.lecture4;
 
-import pl.mazurmarcin.javastart.lecture4.CarController;
-import pl.mazurmarcin.javastart.lecture4.FastCar;
-
 public class CarDemo {
 
     public static void main(String[] args) {
