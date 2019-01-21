@@ -1,4 +1,4 @@
-package pl.mazurmarcin.javastart.basic;
+package pl.mazurmarcin.javastart.basic.chapter4;
 
 import java.util.Random;
 

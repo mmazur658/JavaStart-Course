@@ -1,4 +1,4 @@
-package pl.mazurmarcin.javastart.basic;
+package pl.mazurmarcin.javastart.basic.chapter5;
 
 public class Comapny {
 
