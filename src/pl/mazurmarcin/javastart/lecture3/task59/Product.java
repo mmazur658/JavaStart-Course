@@ -9,9 +9,13 @@ public class Product {
 
     public Product() {
     }
-
+    
     public Product(Category category, String name, String description, double price) {
-        this.category = category;
+    	this(name, description, price);
+    	this.category = category;
+    }
+
+    public Product( String name, String description, double price) {
         this.name = name;
         this.description = description;
         this.price = price;
