@@ -26,7 +26,7 @@ public class ScanTest {
 		System.out.println(Math.pow(number, 2));
 		
 		
-		
+		scanner.nextLine();
 		
 		
 		
