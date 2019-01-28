@@ -11,13 +11,12 @@ public class NamePrinter {
 
 		System.out.println("Podaj 5 imion: ");
 
-		for (int i = 4; i >= 0; i--)
+		for (int i = nameArray.length-1; i >= 0; i--)
 			nameArray[i] = scanner.nextLine();
 
-		for (String name : nameArray) {
+		for (String name : nameArray) 
 			System.out.println("Czeœæ " + name);
-		}
-
+		
 		scanner.close();
 
 	}
