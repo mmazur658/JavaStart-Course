@@ -27,8 +27,14 @@ public class HomeBudgetController {
 
 		System.out.println("Podaj wartoœæ wydatku: ");
 		double amount = input.nextDouble();
-
-		homeBudget.add(new Outgo(monthNumber, amount, type));
+		
+		if (monthNumber < 1 || monthNumber > 12)
+			System.out.println("Number miesi¹ca musi byæ w przedziale 1-12");
+		else if (amount <= 0)
+			System.out.println("Wartoœæ nie mo¿ê byæ mniejsza b¹dz równa zero");
+		else
+			homeBudget.add(new Outgo(monthNumber, amount, type));
+		
 	}
 
 	public void printAllOutgoes() {
@@ -69,7 +75,7 @@ public class HomeBudgetController {
 	}
 
 	public void showYearlyChart() {
-		System.out.println("Podaj rodzaj wykresu: 1. Pionowy  2. Poziomy");		
+		System.out.println("Podaj rodzaj wykresu: 1. Pionowy  2. Poziomy");
 		homeBudget.showYearlyChart(input.nextInt());
 
 	}

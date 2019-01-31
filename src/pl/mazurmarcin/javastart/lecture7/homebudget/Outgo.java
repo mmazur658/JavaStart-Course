@@ -11,11 +11,7 @@ public class Outgo {
 	}
 
 	public void setMonthNumer(int monthNumer) {
-
-		if (monthNumer < 1 || monthNumer > 12)
-			System.out.println("Number miesi¹ca musi byæ w przedziale 1-12");
-		else
-			this.monthNumer = monthNumer;
+		this.monthNumer = monthNumer;
 	}
 
 	public double getAmount() {
@@ -23,11 +19,7 @@ public class Outgo {
 	}
 
 	public void setAmount(double amount) {
-
-		if (amount <= 0)
-			System.out.println("Wartoœæ nie mo¿ê byæ mniejsza b¹dz równa zero");
-		else
-			this.amount = amount;
+		this.amount = amount;
 	}
 
 	public String getType() {
@@ -48,9 +40,9 @@ public class Outgo {
 		this.amount = amount;
 		this.type = type;
 	}
-	
+
 	public Outgo() {
-		
+
 	}
 
 }
