@@ -69,7 +69,8 @@ public class HomeBudgetController {
 	}
 
 	public void showYearlyChart() {
-		homeBudget.showYearlyChart();
+		System.out.println("Podaj rodzaj wykresu: 1. Pionowy  2. Poziomy");		
+		homeBudget.showYearlyChart(input.nextInt());
 
 	}
 

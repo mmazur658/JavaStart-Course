@@ -1,5 +1,6 @@
 package pl.mazurmarcin.javastart.lecture7.homebudget;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,17 +60,58 @@ public class HomeBudget {
 
 	}
 
-	public void showYearlyChart() {
+	public void showYearlyChart(int chartType) {
 
 		double[] arr = collectYearlyData();
 
-		System.out.println("Zwstawienie roczne wydatków. Jedna * =  " + CHART_SCALE);
-		System.out.println("-------------------------------------------------");
+		if (chartType == 1) {
 
-		for (int i = 0; i < arr.length; i++)
-			System.out.printf("%2d %s \n", i, createChartLine(arr[i]));
-		
-		System.out.println();
+			System.out.println("Zwstawienie roczne wydatków. Jedna * =  " + CHART_SCALE);
+			System.out.println("-------------------------------------------------");
+
+			for (int i = 0; i < arr.length; i++)
+				System.out.printf("%2d %s \n", i, createChartLine(arr[i]+1));
+
+			System.out.println();
+
+		} else if (chartType == 2) {
+
+			int[] tempArr = new int[12];
+			for (int i = 0; i < tempArr.length; i++)
+				tempArr[i] = (int) (arr[i] / CHART_SCALE);
+
+			int max = Arrays.stream(tempArr).max().getAsInt();
+
+			System.out.println(max);
+
+			int[][] bigArr = new int[12][max];
+
+			for (int i = 0; i < bigArr.length; i++) {
+
+				for (int j = max - 1; j >= max - tempArr[i]; j--) {
+					bigArr[i][j] = 1;
+				}
+
+			}
+
+			System.out.println("Zwstawienie roczne wydatków. Jedna * =  " + CHART_SCALE);
+			System.out.println("-------------------------------------------------");
+
+			for (int i = 0; i < max; i++) {
+				for (int j = 0; j < bigArr.length; j++) {
+					if (bigArr[j][i] == 1)
+						System.out.print(" * ");
+					else
+						System.out.print("   ");
+				}
+				System.out.println();
+			}
+
+			System.out.println("-------------------------------------------------");
+			System.out.println(" 1  2  3  4  5  6  7  8  9  10 11 12  ");
+
+		} else
+			System.out.println("Brak wykresu.");
 
 	}
 
@@ -118,7 +160,7 @@ public class HomeBudget {
 		double[] arr = new double[12];
 
 		for (int i = 0; i < nubmerOfOutgo; i++)
-			arr[outGoArr[i].getMonthNumer()] += outGoArr[i].getAmount();
+			arr[outGoArr[i].getMonthNumer()-1] += outGoArr[i].getAmount();
 
 		return arr;
 	}
