@@ -14,15 +14,15 @@ public class CalandarConverter {
 
 		switch (dayNumber) {
 		case MONDAY:
-			return "Poniedzia³ek";
+			return "PoniedziaÅ‚ek";
 		case TUESDAY:
 			return "Wtorek";
 		case WEDNESDAY:
-			return "Œroda";
+			return "Åšroda";
 		case THURSDAY:
 			return "Czwartek";
 		case FRIDAY:
-			return "Pi¹tek";
+			return "PiÄ…tek";
 		case SATURDAY:
 			return "Sobota";
 		case SUNDAY:
