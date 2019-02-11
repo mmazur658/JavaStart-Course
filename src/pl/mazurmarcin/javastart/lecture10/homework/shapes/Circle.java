@@ -26,5 +26,10 @@ public class Circle extends GeometricShape {
 		return String.format("Koło o promieniu wynoszącym: %f, ma pole: %.2f", radius, calculate());
 	}
 
+	@Override
+	public String getValues() {
+		return ""+radius;
+	}
+
 
 }

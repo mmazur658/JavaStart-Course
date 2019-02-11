@@ -2,7 +2,7 @@ package pl.mazurmarcin.javastart.lecture10.homework.shapes;
 
 public class ShapeCalculator extends LineCalc implements Calc2D, Calc3D {
 
-	@Override
+	/*@Override
 	public double ballVolume(Ball ball) {
 		return ball.calculate();
 	}
@@ -21,6 +21,8 @@ public class ShapeCalculator extends LineCalc implements Calc2D, Calc3D {
 	public double rectangeArea(Rectangle rectangle) {
 		return rectangle.calculate();
 	}
+	
+	*/
 
 	@Override
 	public double shapeArea(GeometricShape shape) {

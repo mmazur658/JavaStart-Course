@@ -36,4 +36,9 @@ public class Rectangle extends GeometricShape {
 		return String.format("Prostokąt o bokach A: %d i B: %d, ma pole: %.2f", a, b, calculate());
 	}
 
+	@Override
+	public String getValues() {
+		return a+" i "+b;
+	}
+
 }

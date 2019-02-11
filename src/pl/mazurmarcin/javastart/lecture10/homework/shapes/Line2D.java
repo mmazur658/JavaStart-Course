@@ -46,4 +46,9 @@ public class Line2D extends Shape2D {
 
 	}
 
+	@Override
+	public String getValues() {
+		return "["+point1.getX()+", "+point1.getY()+"] ["+point2.getX()+", "+point1.getY()+"]";
+	}
+
 }

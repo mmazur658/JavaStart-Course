@@ -26,4 +26,9 @@ public class Ball extends Shape3D {
 		return String.format("Kula o promieniu wynoszącym %f, ma objętość: %.2f", radius, calculate());
 	}
 
+	@Override
+	public String getValues() {
+		return ""+radius;
+	}
+
 }

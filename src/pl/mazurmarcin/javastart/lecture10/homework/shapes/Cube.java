@@ -27,4 +27,9 @@ public class Cube extends Shape3D {
 
 	}
 
+	@Override
+	public String getValues() {
+		return ""+a;
+	}
+
 }
