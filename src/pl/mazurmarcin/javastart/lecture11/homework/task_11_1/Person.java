@@ -1,4 +1,4 @@
-package pl.mazurmarcin.javastart.lecture11.homework;
+package pl.mazurmarcin.javastart.lecture11.homework.task_11_1;
 
 public class Person {
 
@@ -8,19 +8,9 @@ public class Person {
 	private String pesel;
 
 	public Person(String firstName, String lastName, int age, String pesel) {
-		
-		if(age < 0)
-			throw new IncorrectAgeException("The age cannot be less then 0");
-		
-		if(firstName==null ||  firstName.length() < 3 )
-			throw new NameUndefinedException("Incorrect first Name. The given name cannot be null or shorten then 3 letters");
-				
-		if(lastName==null || lastName.length() < 3)
-			throw new NameUndefinedException("Incorrect last Name. The given name cannot be null or shorten then 3 letters");
-			
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setAge(age);
 		this.pesel = pesel;
 	}
 
@@ -29,6 +19,11 @@ public class Person {
 	}
 
 	public void setFirstName(String firstName) {
+
+		if (firstName == null || firstName.length() < 3)
+			throw new NameUndefinedException(
+					"Incorrect first Name. The given name cannot be null or shorten then 3 letters");
+
 		this.firstName = firstName;
 	}
 
@@ -37,6 +32,11 @@ public class Person {
 	}
 
 	public void setLastName(String lastName) {
+
+		if (lastName == null || lastName.length() < 3)
+			throw new NameUndefinedException(
+					"Incorrect last Name. The given name cannot be null or shorten then 3 letters");
+
 		this.lastName = lastName;
 	}
 
@@ -45,6 +45,10 @@ public class Person {
 	}
 
 	public void setAge(int age) {
+
+		if (age < 0)
+			throw new IncorrectAgeException("The age cannot be less then 0");
+
 		this.age = age;
 	}
 

@@ -1,4 +1,4 @@
-package pl.mazurmarcin.javastart.lecture11.homework;
+package pl.mazurmarcin.javastart.lecture11.homework.task_11_1;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
