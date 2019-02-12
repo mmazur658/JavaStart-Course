@@ -3,6 +3,7 @@ package pl.mazurmarcin.javastart.lecture10.homework.shapes;
 public class ShapeApp {
 
 	private static ShapeCalculator shapeCalculator = new ShapeCalculator();
+
 	private static final String Rectangle = "Rectangle";
 	private static final String Line2D = "Line2D";
 	private static final String Circle = "Circle";
