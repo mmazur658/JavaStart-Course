@@ -1,0 +1,5 @@
+1;Marcin;Mazur;523-523-666
+2;Michał;Zawadzki;5223-555-66
+3;Anna;Plebsara;523256-888
+4;Karol;Chodkiewicz;52-66-896
+5;Antoni;Blue;523-9856
