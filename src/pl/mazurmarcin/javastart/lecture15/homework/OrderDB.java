@@ -23,13 +23,14 @@ public class OrderDB {
 		orders.add(order);
 	}
 
-	public Order getSingleOrder(int index) {
+	public Order getSingleOrderById(int id) {
 
-		if (index < orders.size())
-			return orders.get(index);
-		else
-			return null;
-
+		for (Order order : orders) {
+			if(order.getId() == id)
+				return order;
+		}
+		
+		return null;
 	}
 
 }

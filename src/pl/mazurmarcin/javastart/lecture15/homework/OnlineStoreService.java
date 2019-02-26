@@ -23,11 +23,25 @@ public class OnlineStoreService {
 		return orders;
 	}
 
-	public Order getSingleOrder(int index) {
-		if ((index - 1) < orderDB.getOrders().size())
-			return orderDB.getSingleOrder(index);
-		else
-			return null;
+	public boolean orderExists(int id) {
+
+		for (Order order : orderDB.getOrders()) {
+			if (order.getId() == id)
+				return true;
+		}
+
+		return false;
+
 	}
+
+	public boolean canOrderStatusBeCancelled(int id) {
+		OrderStatus os = orderDB.getSingleOrderById(id).getStatus();
+		return os == OrderStatus.CANCELLED || os == OrderStatus.COLLECTED || os == OrderStatus.READY_TO_DISPATCH;
+	}
+
+	public void changeStatus(int id, OrderStatus newOrderStatus) {
+		orderDB.getSingleOrderById(id).setStatus(newOrderStatus);
+	}
+
 
 }

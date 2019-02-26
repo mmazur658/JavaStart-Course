@@ -1,6 +1,5 @@
 package pl.mazurmarcin.javastart.lecture15.homework;
 
-import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -46,17 +45,21 @@ public class OnlineStore {
 	}
 
 	public void printMainOptions() {
+
 		System.out.println(OnlineStoreMainMenu.SORT.getValue() + " - Sortowanie i  wyświetlenie listy");
 		System.out.println(OnlineStoreMainMenu.CHANGE_STATUS.getValue() + " - Zmiana statusu");
 		System.out.println(OnlineStoreMainMenu.ADD_ORDER.getValue() + " - Dodawanie zamówienia");
 		System.out.println(OnlineStoreMainMenu.EXIT.getValue() + " - Koniec");
+
 	}
 
 	public void printSortOptinos() {
+
 		System.out.println("\nWybierz typ sortowania: ");
 		System.out.println(ComparatorType.SORT_BY_NAME.getIndex() + " - sortuj po nazwie");
 		System.out.println(ComparatorType.SORT_BY_PRICE.getIndex() + " - sortuj po cenie");
 		System.out.println(ComparatorType.SORT_BY_STATUS.getIndex() + " - sortuj po statusie");
+
 	}
 
 	public void printList(List<Order> orders) {
@@ -80,8 +83,11 @@ public class OnlineStore {
 	private void addNewOrder() {
 
 		System.out.println("Dodawanie nowego zamówienia . . .");
+
 		System.out.println("Podaj id: ");
-		int id = getCorrectInt();
+		int id = getUniqueId();
+
+		getCorrectInt();
 
 		scanner.nextLine();
 		System.out.println("Podaj nazwę: ");
@@ -92,43 +98,59 @@ public class OnlineStore {
 
 		onlineStoreService.createNewOrder(id, name, price);
 		System.out.println("Zamówienie zostało dodane");
+
+	}
+
+	private int getUniqueId() {
+
+		int userInput;
+		boolean isIdUnique = false;
+
+		do {
+
+			userInput = getCorrectInt();
+			isIdUnique = !onlineStoreService.orderExists(userInput);
+
+			if (!isIdUnique)
+				System.out.println("Podane id nie jest unikalne, wpisz ponownie . . . ");
+
+		} while (!isIdUnique);
+
+		return userInput;
 	}
 
 	private void sayGoodBye() {
+
 		System.out.println("Do zobaczenia!");
 		onlineStoreService.cleanTheFloorAndCloseTheDoor();
 		scanner.close();
+
 	}
 
 	private void changeStatus() {
 
-		System.out.println("Podaj index zamówienia do zmiany: ");
-		int index = getCorrectInt();
-		Order order = onlineStoreService.getSingleOrder(index);
+		System.out.println("Podaj id zamówienia: ");
+		int id = getCorrectInt();
 
-		if (order == null)
-			System.out.println("Brak zamówienia o podanym indexie.");
-		else {
-			OrderStatus newOrderStatus = getOrderStatus();
-			OrderStatus orderStatus = order.getStatus();
+		if (onlineStoreService.orderExists(id)) {
+
+			OrderStatus newOrderStatus = getNewOrderStatus();
+
 			if (newOrderStatus == OrderStatus.CANCELLED) {
 
-				if (orderStatus == OrderStatus.CANCELLED || orderStatus == OrderStatus.COLLECTED
-						|| orderStatus == OrderStatus.READY_TO_DISPATCH) {
-
-					order.setStatus(newOrderStatus);
-					System.out.println("Status został zmieniony");
-
-				} else {
+				if (onlineStoreService.canOrderStatusBeCancelled(id)) {
+					onlineStoreService.changeStatus(id, newOrderStatus);
+					System.out.println("Status został zmieniony.");
+				} else
 					System.out.println("Nie można zmienić statusu");
-				}
 
 			} else {
-				order.setStatus(newOrderStatus);
+				onlineStoreService.changeStatus(id, newOrderStatus);
 				System.out.println("Status został zmieniony");
 			}
 
-			orderDB.getSingleOrder(index).setStatus(newOrderStatus);
+		} else {
+			System.out.println("Brak zamówienia o podanym indexie.");
 		}
 
 	}
@@ -178,33 +200,22 @@ public class OnlineStore {
 
 	}
 
-	public OrderStatus getOrderStatus() {
-		
-		System.out.println("Dostępne statusy: ");
+	public OrderStatus getNewOrderStatus() {
+
+		System.out.println("Dostępne statusy: (podaj number)");
 		for (OrderStatus status : OrderStatus.values())
-			System.out.println((status.ordinal()+1)+" - "+status);
-		
+			System.out.println((status.ordinal() + 1) + " - " + status);
+
 		OrderStatus orderStatus = null;
 		int userInput = 0;
-		
+
 		do {
-			
-			userInput = getCorrectInt()-1;
-			
+			userInput = getCorrectInt() - 1;
+
 			for (OrderStatus status : OrderStatus.values()) {
-				if(status.ordinal()==)
+				if (status.ordinal() == userInput)
+					orderStatus = status;
 			}
-				
-			
-			
-		} while (orderStatus == null);
-		
-
-
-
-		do {
-			orderStatuName = nextLine().toUpperCase();
-			orderStatus = OrderStatus.valueOf(orderStatuName);
 
 			if (orderStatus == null)
 				System.out.println("Status nierozpoznany - wpisz ponownie");
