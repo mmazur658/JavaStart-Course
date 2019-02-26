@@ -55,14 +55,14 @@ public class CashMachine {
 		StringBuilder sb = new StringBuilder();
 
 		do {
-			for (int i = DENIMONATIONS_VALUES.length - 1; i >= 0; i--) {				
-				if((absoluteValue-DENIMONATIONS_VALUES[i])>=0) {
-					
+			for (int i = DENIMONATIONS_VALUES.length - 1; i >= 0; i--) {
+				if ((absoluteValue - DENIMONATIONS_VALUES[i]) >= 0) {
+
 					sb.append(DENIMONATIONS_NAMES[i]);
-					sb.append(" ");	
+					sb.append(" ");
 					absoluteValue -= DENIMONATIONS_VALUES[i];
 					break;
-				}		
+				}
 			}
 		} while (absoluteValue >= 1);
 

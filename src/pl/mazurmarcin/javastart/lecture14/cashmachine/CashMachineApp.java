@@ -20,11 +20,11 @@ public class CashMachineApp {
 			moneyToPay -= getBillValue(userInput);
 
 		} while (moneyToPay > 0);
-		
+
 		giveChange(moneyToPay);
 
 	}
-	
+
 	private void sayHello() {
 		System.out.println("Witaj w CachMachine. Automat obsługuje następujące monety i banknoty: ");
 		cashMachine.printDenominationsNames();
@@ -42,13 +42,12 @@ public class CashMachineApp {
 
 		return billValue;
 	}
-	
+
 	private void giveChange(double value) {
-		
+
 		double absoluteValue = Math.abs(value);
-		System.out.printf("Reszta: %.2f zł \n%s \n", (absoluteValue/100), cashMachine.calculateChange(absoluteValue));
+		System.out.printf("Reszta: %.2f zł \n%s \n", (absoluteValue / 100), cashMachine.calculateChange(absoluteValue));
+		
 	}
-
-
 
 }
